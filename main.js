@@ -1,5 +1,6 @@
 // Library of Quotes
-var quoteLibrary = [{
+var allQuotes = [stressQuotes, moneyQuotes, loveQuotes];
+var stressQuotes = [{
   quote: 'Difficulties are things that show a person what they are.',
   author:  'Epictetus',
   theme: 'Stress'
@@ -13,8 +14,8 @@ var quoteLibrary = [{
   quote: 'Difficulties strengthen the mind, as labor does the body.',
   author:  'Seneca',
   theme: 'Stress'
-  },
-  {
+  }];
+var moneyQuotes = [{
   quote: 'Wealth consists not in having great possessions, but in having few wants',
   author: 'Epictetus',
   theme: 'Money'
@@ -28,8 +29,8 @@ var quoteLibrary = [{
   quote: 'Qui mori didicit servire dedidicit.',
   author: 'Seneca',
   theme: 'Money'
-  },
-  {
+  }];
+var loveQuotes = [{
   quote: 'Remember to act always as if you were at a symposium. When the food or drink comes around, reach out and take some politely; if it passes you by don\'t try pulling it back. And if it has not reached you yet, don\'t let your desire run ahead of you, be patient until your turn comes. Adopt a similar attitude with regard to children, wife, wealth and status, and in time, you will be entitled to dine with the gods. Go further and decline these goods even when they are on offer and you will have a share in the gods\' power as well as their company. That is how Diogenes, Heraclitus and philosophers like them came to be called, and considered, divine.',
   author: 'Epictetus',
   theme: 'Love'
@@ -48,71 +49,113 @@ var quoteLibrary = [{
   quote: 'Conversation has a kind of charm about it, an insinuating and insidious something that elicits secrets just like love or liquor',
   author: 'Seneca',
   theme: 'Love'
+  }];
+var buttons = [{
+  theme: 'stress',
+  icon: 'glyphicon glyphicon-warning-sign'
   },
-];
+  {
+  theme: 'money',
+  icon: 'glyphicon glyphicon-usd'
+  },
+  {
+  theme:'love',
+  icon: 'glyphicon glyphicon-heart'
+  },
+  {
+  theme: 'add',
+  icon: 'glyphicon glyphicon-plus-sign'
+  }];
 
-// Quote Constructor
-var Quote = function (quote, author) {
-  this.quote = quote;
-  this.author = author;
-  this.render();
-};
-// Quote Render prototype
-Quote.prototype.render = function () {
-  if(!this.el){
+
+
+  // QuoteApp base class
+  var QuoteApp = function () {
+    this.libraries = [];
+    this.render();
+    };
+  QuoteApp.prototype.render = function() {
+    QuoteLibrary.render();
+    QuoteLibrary.renderButton();
+    QuoteLibrary.renderViewBlock();
+    };
+  //
+  //
+  //
+  // QuoteLibrary class
+  var QuoteLibrary = function(name) {
+    this.name = name;
+    this.quotelist = [];
+    this.render();
+    };
+  QuoteLibrary.prototype.render = function () {
+    Quote.render();
+    };
+  // Add render method to QuoteLibrary class
+  QuoteLibrary.prototype.renderViewBlock = function() {
+  // render a viewblock
     this.el = $('#quote-tpl');
-  }
-  this.el.find('.quote-wording').text(this.quote);
-  this.el.find('.quote-author').text(this.author);
-  return this.el;
-};
-// QuoteBank Constructor
-var QuoteBank = function (quote) {
-  this.quote = quote;
-  this.quotes = [];
-  this.render();
-};
-// QuoteBank Add Quote prototype
-QuoteBank.prototype.addQuote = function (quote) {
-  this.quotes.push(quote);
-  this.render();
-};
-// QuoteBank Form Submit prototype
-QuoteBank.prototype.onFormSubmit = function (e) {
-  e.preventDefault();
-var quoteWording = $(e.currentTarget).find('[name=quote-wording]').val();
-var quoteAuthor = $(e.currentTarget).find('[name=quote-author]').val();
-var newQuote = new Quote(quoteWording, quoteAuthor);
-this.addQuote(newQuote);
-};
+    this.el.find('.quote-wording').text(this.quote);
+    this.el.find('.quote-author').text(this.author);
+    return this.el;
+    };
+  QuoteLibrary.prototype.renderButton = function() {
+    // render a button
+    $('<button/>')
+      .text(name)
+      .attr('btn_', name);
+      //addClass();
+      onClick = function () { alert('hi');
+      };
+      };
+  //QuoteLibrary.prototype.loader = function() {
+    //I DONT KNOW WHAT GOES HERE
 
-// Theme Button Click Handlers
-$('#obstacleButton').on('click', function() {
-  this.quote = staticQuoteBank[0][1].quote;
-  this.author = staticQuoteBank[0][1].author;
-  var pulledQuote = new Quote(this.quote, this.author);
-  pulledQuote.render();
-});
-$('#moneyButton').on('click', function() {
-  this.quote = staticQuoteBank[1][1].quote;
-  this.author = staticQuoteBank[1][1].author;
-  var pulledQuote = new Quote(this.quote, this.author);
-  pulledQuote.render();
-});
-$('#loveButton').on('click', function() {
-  this.quote = staticQuoteBank[1][1].quote;
-  this.author = staticQuoteBank[1][1].author;
-  var pulledQuote = new Quote(this.quote, this.author);
-  pulledQuote.render();
-});
-// Attempt to make 'Button Click Handler' modular
-QuoteBank.prototype.onThemeButtonClick = function() {
+  //
+  //
+  //
+  // Quote Class & Constructor
+  var Quote = function (quote, author) {
+    this.quote = quote;
+    this.author = author;
+    this.render();
+    };
+  Quote.prototype.render = function() {
+    var quote = $(e.currentTarget).find('[name=quote-wording]').val();
+    var author = $(e.currentTarget).find('[name=quote-author]').val();
+    var newQuote = new Quote(quote, author);
+    };
 
-  this.addQuote(pullQuote);
-};
+
+
+    // TRYING TO ENTER STATIC INFORMATION
+  var stressLibrary = function() {
+    for (var i = 0; i >= stressQuotes.length; i++) {
+      var addQuote = stressQuotes[i].quote;
+      var addAuthor = stressQuotes[i].author;
+      var quoteAndAuthor = new Quote(addQuote, addAuthor);
+      quotelist.push(quoteAndAuthor);
+    }
+  };
+  var moneyLibrary = function() {
+    for (var i = 0; i >= moneyQuotes.length; i++) {
+      var addQuote = moneyQuotes[i].quote;
+      var addAuthor = moneyQuotes[i].author;
+      var quoteAndAuthor = new Quote(addQuote, addAuthor);
+      quotelist.push(quoteAndAuthor);
+    }
+  };
+  var loveLibrary = function() {
+    for (var i = 0; i >= loveQuotes.length; i++) {
+      var addQuote = loveQuotes[i].quote;
+      var addAuthor = loveQuotes[i].author;
+      var quoteAndAuthor = new Quote(addQuote, addAuthor);
+      quotelist.push(quoteAndAuthor);
+    }
+  };
+
+
+  $('body').append(QuoteApp.render());
 
 $( document ).ready(function() {
-// render icons for library themes
-var
 });
-
