@@ -41,7 +41,7 @@ QuoteLibrary.prototype.addButton = function() {
     .addClass(this.name);
     var original = this;
     this.buttonel.on('click', function() {
-      console.log(original);
+      console.log(original);                            //REMOVE
       original.render();
     });
   }
@@ -49,12 +49,18 @@ QuoteLibrary.prototype.addButton = function() {
 };
 // Render method added to QuoteLibrary class
 QuoteLibrary.prototype.render = function() {
-  this.el = $('#quoteBox');
-  // this.el.find('.quote-wording').text(this.quote);
-  // this.el.find('.quote-author').text(this.author);
-  return this.el;
+  //var i = this.library[Math.floor(math.random()*this.library.length)];
+  //$('#quoteBox').append();
+  if(this.el === undefined) {
+  this.el = $('#quoteBox')
+  .empty()
+  .clone()
+  .attr('id', null);
+  }
+  this.el.find('.quote-wording').text("test");
+  this.el.find('.quote-author').text("test");
+  $('body').append(this.el);
 };
-
 
 
 
@@ -66,21 +72,7 @@ var Quote = function (quote, author, theme, rating) {
   this.theme = theme;
   this.rating = 0;
 };
-// Add a render function to the Quote class
-// Quote.prototype.render = function() {
-//   this.el = $('#quoteBox');
-//   this.el.find('.quote-wording').text(this.quote);
-//   this.el.find('.quote-author').text(this.author);
-//   return this.el;
-//
-// Add a click handler for theme button clicks
-$('#scroller').on('click', function() {
-console.log('click!');
-this.name
 
-});
-// var tempLibrary =
-// });
 
 
 
@@ -93,7 +85,6 @@ stress.addQuote(stressQuote1);
 stress.addQuote(stressQuote2);
 stress.addQuote(stressQuote3);
 
-
 var moneyQuote1 = new Quote('Wealth consists not in having great possessions, but in having few wants', 'Epictetus', 'Money', 1);
 var moneyQuote2 = new Quote('Associate with people who are likely to improve you', 'Seneca', 'Money', 2);
 var moneyQuote3 = new Quote('Qui mori didicit servire dedidicit.', 'Seneca','Money', 3);
@@ -101,7 +92,6 @@ var money = new QuoteLibrary('money');
 money.addQuote(moneyQuote1);
 money.addQuote(moneyQuote2);
 money.addQuote(moneyQuote3);
-
 
 var loveQuote1 = new Quote('Remember to act always as if you were at a symposium. That is how Diogenes, Heraclitus and philosophers like them came to be called, and considered, divine.', 'Epictetus', 'Love', 1);
 var loveQuote2 = new Quote('The key is to keep company only with people who uplift you, whose presence calls forth your best','Epictetus','Love', 2);
@@ -113,7 +103,6 @@ love.addQuote(loveQuote1);
 love.addQuote(loveQuote2);
 love.addQuote(loveQuote3);
 love.addQuote(loveQuote4);
-
 
 var myApp = new QuoteApp();
 myApp.addLibrary(stress);
