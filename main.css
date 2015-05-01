@@ -1,6 +1,88 @@
 body {
-background-color: #fafafa;
+  background-color: steelblue;
+  padding: 25px;
+}
+body :focus { outline: none;
+}
+nav {
+  border: none;
+}
+.navbar-inverse {
+  background-color: rgb(90,90,90);
+  border: none;
+}
+.quote-wording {
+  color: #fafafa;
+  font-family: Helvetica Neue;
+  font-weight: 100;
+  font-size: 2em;
+}
+.quote-author {
+  color: #fafafa;
+  font-family: Helvetica Neue;
+  font-weight: 200;
+  text-align: right;
+  font-size: 1.9em;
+  font-weight: 500;
 }
 #template {
-display: none;
+  display: none;
+}
+#scroller {
+  /*background-color: */
+  background-color: rgb(160,160,160);
+  padding-left: 5px;
+}
+#quoteBox {
+  padding-top: 15px;
+}
+button {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: rgba(100,100,100,0);
+  border: none;
+  height: 80px;
+  width: 70px;
+  padding: 10px;
+}
+button.library-button-tpl.money {
+  background-image: url("png/money243w.png");
+}
+button.library-button-tpl.stress{
+  background-image: url("png/java2w.png");
+}
+button.library-button-tpl.love {
+  background-image: url("png/favorite7w.png");
+}
+button.library-button-tpl.sad {
+  background-image: url("png/sad30w.png");
+}
+  button.library-button-tpl.improve {
+  background-image: url("png/win4w.png");
+}
+.footer-nav-container {
+  background-color: rgb(160,160,160);
+}
+nav.navbar.navbar-default.navbar-fixed-bottom {
+  height: 75px;
+  background-color: rgb(160,160,160);
+  border: none;
+}
+.instagram {
+  background-image: url("png/instagram12w.png");
+}
+.pinterest {
+  background-image: url("png/pinterest34w.png");
+}
+.facebook {
+  background-image: url("png/facebookw.png");
+}
+.reddit {
+  background-image: url("png/reddit7w.png");
+}
+.tumblr {
+  background-image: url("png/logotype1w.png");
+}
+.twitter {
+  background-image: url("png/twitter4w.png");
 }
