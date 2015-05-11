@@ -1,5 +1,6 @@
 body {
-  background-color: steelblue;
+  background-color: rgba(0,0,0,0.1);
+  background-image: url("I6wall.jpg");
   padding: 25px;
 }
 body :focus { outline: none;
@@ -8,7 +9,7 @@ nav {
   border: none;
 }
 .navbar-inverse {
-  background-color: rgb(90,90,90);
+  background-color: rgba(0,0,0,0.1);
   border: none;
 }
 .quote-wording {
@@ -30,16 +31,17 @@ nav {
 }
 #scroller {
   /*background-color: */
-  background-color: rgb(160,160,160);
+  background-color: rgba(0,0,0,0.1);
   padding-left: 5px;
 }
 #quoteBox {
-  padding-top: 15px;
+  padding-top: 50%;
+  padding-bottom: 50%;
 }
 button {
   background-repeat: no-repeat;
   background-position: center;
-  background-color: rgba(100,100,100,0);
+  background-color: rgba(0,0,0,0.1);
   border: none;
   height: 80px;
   width: 70px;
@@ -61,11 +63,11 @@ button.library-button-tpl.sad {
   background-image: url("png/win4w.png");
 }
 .footer-nav-container {
-  background-color: rgb(160,160,160);
+  background-color: rgba(0,0,0, 0.1);
 }
 nav.navbar.navbar-default.navbar-fixed-bottom {
   height: 75px;
-  background-color: rgb(160,160,160);
+  background-color: rgba(0,0,0, 0.1);
   border: none;
 }
 .instagram {
